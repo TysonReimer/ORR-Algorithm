@@ -12,7 +12,9 @@ from [here](https://bit.ly/UM-bmid) folder in the `../data/` folder
 of this repository.
 
 1. T. Reimer and S. Pistorius, "An optimization-based approach to radar
-image reconstruction in breast microwave sensing," _Sensors_, submitted.
+image reconstruction in breast microwave sensing," _Sensors_, vol. 21, 
+no. 24, 2021.
+
 
 ## Authors
 
