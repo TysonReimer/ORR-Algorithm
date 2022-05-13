@@ -185,7 +185,6 @@ def plot_img(img, tum_x=0.0, tum_y=0.0, tum_rad=0.0, adi_rad=0.0, ant_rad=0.0,
 ###############################################################################
 
 
-
 def plot_fd_img(img, tum_x=0.0, tum_y=0.0, tum_rad=0.0, adi_rad=0.0,
                 ant_rad=0.0, roi_rad=0.0, img_rad=0.0, save_str='',
                 save_fig=False,
