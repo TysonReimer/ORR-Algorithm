@@ -15,7 +15,7 @@ __VACUUM_SPEED = 3e8  # Speed of light in a vacuum
 ###############################################################################
 
 
-def get_xy_arrs(m_size, ant_rad):
+def get_xy_arrs(m_size, roi_rad):
     """Finds the x/y position of each pixel in the image-space
 
     Returns arrays that contain the x-distances and y-distances of every
@@ -25,8 +25,8 @@ def get_xy_arrs(m_size, ant_rad):
     ----------
     m_size : int
         The number of pixels along one dimension of the model
-    ant_rad : float
-        The radius of the antenna trajectory during the scan in meters
+    roi_rad : float
+        The radius of the ROI used to define the x/y arrays
 
     Returns
     -------
@@ -48,8 +48,8 @@ def get_xy_arrs(m_size, ant_rad):
         y_coords[:, pix] = pix + 1
 
     # Find the distances for these pixels
-    x_dists = (x_coords - m_size // 2) * 2 * ant_rad / m_size
-    y_dists = -(y_coords - m_size // 2) * 2 * ant_rad / m_size
+    x_dists = (x_coords - m_size // 2) * 2 * roi_rad / m_size
+    y_dists = -(y_coords - m_size // 2) * 2 * roi_rad / m_size
 
     return x_dists, y_dists
 
@@ -548,7 +548,7 @@ def get_pix_ts(ant_rad, m_size, roi_rad, speed, n_ant_pos=72,
                                       ini_ant_ang=ini_ant_ang)
 
     # Create arrays of pixel x/y positions
-    pix_xs, pix_ys = get_xy_arrs(m_size=m_size, ant_rad=roi_rad + 0.01)
+    pix_xs, pix_ys = get_xy_arrs(m_size=m_size, roi_rad=roi_rad)
 
     # Init array for storing pixel time-delays
     p_ts = np.zeros([n_ant_pos, m_size, m_size])
@@ -561,7 +561,7 @@ def get_pix_ts(ant_rad, m_size, roi_rad, speed, n_ant_pos=72,
 
         # Calculate one-way time-delay of propagation from antenna to
         # each pixel
-        p_ts[a_pos, :, :] = np.sqrt(x_diffs ** 2 + y_diffs ** 2) / speed
+        p_ts[a_pos, :, :] = np.sqrt(x_diffs**2 + y_diffs**2) / speed
 
     return p_ts
 

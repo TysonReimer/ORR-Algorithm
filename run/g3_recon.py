@@ -84,15 +84,13 @@ if __name__ == "__main__":
     out_dir = os.path.join(__OUT_DIR, 'recons/')
     verify_path(out_dir)
 
-    # for ii in range(n_expts):  # For each scan / experiment
-    for ii in [1]:
+    for ii in range(n_expts):  # For each scan / experiment
 
         logger.info('Scan [%3d / %3d]...' % (ii + 1, n_expts))
 
         # Get the frequency domain data and metadata of this experiment
         tar_fd = fd_data[ii, :, :]
         tar_md = metadata[ii]
-        print(tar_md['id'])
 
         # If the scan had a fibroglandular shell (indicating it was of
         # a complete tumour-containing or healthy phantom)
@@ -123,7 +121,7 @@ if __name__ == "__main__":
             scan_rad += 0.03618
 
             # Define the radius of the region of interest
-            roi_rad = adi_rad + 0.01
+            roi_rad = adi_rad
 
             # Get the area of each pixel in the image domain
             dv = ((2 * roi_rad) ** 2) / (__M_SIZE ** 2)
@@ -207,7 +205,7 @@ if __name__ == "__main__":
                         save_close=True)
 
             # Reconstruct an ORR image
-            adi_orr = orr_recon(ini_img=np.real(das_adi_recon),
+            adi_orr = orr_recon(ini_img=np.zeros([__M_SIZE, __M_SIZE]),
                                 freqs=scan_fs[tar_fs],
                                 m_size=__M_SIZE,
                                 fd=adi_cal_cropped,
@@ -278,7 +276,7 @@ if __name__ == "__main__":
                             save_close=True)
 
                 # Produce ORR reconstruction, save, plot
-                fib_gd = orr_recon(ini_img=np.real(das_fib_recon),
+                fib_gd = orr_recon(ini_img=np.zeros([__M_SIZE, __M_SIZE]),
                                    freqs=scan_fs[tar_fs],
                                    m_size=__M_SIZE,
                                    fd=fib_cal_cropped,
