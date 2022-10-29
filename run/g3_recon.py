@@ -121,7 +121,7 @@ if __name__ == "__main__":
             scan_rad += 0.03618
 
             # Define the radius of the region of interest
-            roi_rad = adi_rad
+            roi_rad = adi_rad + 0.01
 
             # Get the area of each pixel in the image domain
             dv = ((2 * roi_rad) ** 2) / (__M_SIZE ** 2)
