@@ -11,6 +11,9 @@ and `metadata_gen_three.pickle` in the `/UM-BMID/gen-three/simple-clean/`
 from [here](https://bit.ly/UM-bmid) folder in the `../data/` folder
 of this repository.
 
+Note: A newer version of ORR which incorporates enhanced physics modelling
+and GPU acceleration is available [here](https://github.com/TysonReimer/ORR-EPM).
+
 1. T. Reimer and S. Pistorius, "An optimization-based approach to radar
 image reconstruction in breast microwave sensing," _Sensors_, vol. 21, 
 no. 24, 2021.
